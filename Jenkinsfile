@@ -30,7 +30,7 @@ pipeline {
                     credentialsId: 'nexus2', 
                     groupId: 'in.javahome', 
                     nexusUrl: '54.176.79.145:8081', 
-                    nexusVersion: 'nexus3', 
+                    nexusVersion: 'nexus2', 
                     protocol: 'http', 
                     repository: nexusRepoName, 
                     version: "${mavenPom.version}"
