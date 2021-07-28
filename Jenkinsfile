@@ -1,7 +1,7 @@
 pipeline {
     agent any
     tools {
-        maven 'maven3'
+        maven 'maven'
     }
     options {
         buildDiscarder logRotator(daysToKeepStr: '5', numToKeepStr: '7')
@@ -18,7 +18,7 @@ pipeline {
                 script{
 
                     def mavenPom = readMavenPom file: 'pom.xml'
-                    def nexusRepoName = mavenPom.version.endsWith("SNAPSHOT") ? "simpleapp-snapshot" : "simpleapp-release"
+                    def nexusRepoName = mavenPom.version.endsWith("SNAPSHOT") ? "MavenProject"
                     nexusArtifactUploader artifacts: [
                         [
                             artifactId: 'simple-app', 
@@ -27,10 +27,10 @@ pipeline {
                             type: 'war'
                         ]
                     ], 
-                    credentialsId: 'nexus2', 
+                    credentialsId: 'nexus3', 
                     groupId: 'in.javahome', 
-                    nexusUrl: '54.176.79.145:8081', 
-                    nexusVersion: 'nexus2', 
+                    nexusUrl: '13.233.12.53:8081', 
+                    nexusVersion: 'nexus3', 
                     protocol: 'http', 
                     repository: nexusRepoName, 
                     version: "${mavenPom.version}"
